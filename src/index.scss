@@ -177,4 +177,28 @@ body {
       cursor: not-allowed;
     }
   }
-  
+  /* AnswerTimer.scss */
+
+.timer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  font-family: 'Comic Sans MS', cursive; 
+  font-size: 28px;
+  text-decoration: solid;
+
+}
+
+.timer-icon {
+  margin-right: 10px;
+}
+
+.timer-text {
+  font-size: 28px;
+}

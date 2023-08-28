@@ -1,5 +1,7 @@
 import { useState } from "react";
 import {resultInitialState} from './constants'
+import AnswerTimer from "./AnswerTimer";
+
 
 const Quiz = ({ questions }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -7,6 +9,7 @@ const Quiz = ({ questions }) => {
   const [answer, setAnswer] = useState(null);
   const [result , setResult]=useState(resultInitialState)
   const [showResult, setshowResult] = useState(false)
+  const [timer, setTimer] = useState(10);
 
   const { question, choices, correctAnswer } = questions[currentQuestion];
 
@@ -31,6 +34,7 @@ const Quiz = ({ questions }) => {
     { ...prev ,
          wrongAnswers :prev.wrongAnswers+1}
     );
+    setTimer(10);
 
     if (currentQuestion !== questions.length-1){
         setCurrentQuestion((prev)=>prev+1)
@@ -49,7 +53,12 @@ const Quiz = ({ questions }) => {
   }
 
   return (
-    <div className="quiz-container"> {!showResult ? (<> <div>
+    <div className="quiz-container"> {!showResult ? (<><AnswerTimer
+      showResult={showResult}
+            timer={timer}
+            setTimer={setTimer}
+            onClickNext={onClickNext}
+    /> <div>
          <div className="circle"></div>
   <div className="heart"></div>
         <span className="question-counter">{currentQuestion + 1} </span>
